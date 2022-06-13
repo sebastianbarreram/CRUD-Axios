@@ -61,9 +61,14 @@
       "id": 12
     },
     {
-      "nombre": "aaaaaaaa",
+      "nombre": "aaaa",
       "constelacion": "aaaa",
       "id": 13
+    },
+    {
+      "nombre": "aaaa",
+      "constelacion": "aaaa",
+      "id": 14
     }
   ],
   "dioses": [

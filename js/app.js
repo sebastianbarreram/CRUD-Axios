@@ -60,6 +60,35 @@ d.addEventListener("submit", async e => {
             }
         } else {
             //Update - PUT
+            try {
+                let options = {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    data: JSON.stringify({
+                        nombre: e.target.nombre.value,
+                        constelacion: e.target.constelacion.value
+                    })
+                },
+                    res = await axios(`http://localhost:3000/santos/${e.target.id.value}`, options),
+                    json = await res.data;
+
+                location.reload();
+            } catch (err) {
+                let message = err.statusText || "Ocurrió un error";
+                $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+            }
         }
     }
+});
+
+d.addEventListener("click", async e => {
+    if (e.target.matches(".edit")) {
+        $title.textContent = "Editar Santo";
+        $form.nombre.value = e.target.dataset.name;
+        $form.constelacion.value = e.target.dataset.constellation;
+        $form.id.value = e.target.dataset.id;
+    }
+
 });
