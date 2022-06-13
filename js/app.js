@@ -32,3 +32,34 @@ const getAll = async () => {
 }
 
 d.addEventListener("DOMContentLoaded", getAll);
+
+d.addEventListener("submit", async e => {
+    if (e.target === $form) {
+        e.preventDefault();
+
+        if (!e.target.id.value) {
+            //Create - POST
+            try {
+                let options = {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    data: JSON.stringify({
+                        nombre: e.target.nombre.value,
+                        constelacion: e.target.constelacion.value
+                    })
+                },
+                    res = await axios("http://localhost:3000/santos", options),
+                    json = await res.data;
+
+                location.reload();
+            } catch (err) {
+                let message = err.statusText || "Ocurrió un error";
+                $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+            }
+        } else {
+            //Update - PUT
+        }
+    }
+});

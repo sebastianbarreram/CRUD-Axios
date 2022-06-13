@@ -59,6 +59,11 @@
       "nombre": "Dohko",
       "constelacion": "Libra",
       "id": 12
+    },
+    {
+      "nombre": "aaaaaaaa",
+      "constelacion": "aaaa",
+      "id": 13
     }
   ],
   "dioses": [
